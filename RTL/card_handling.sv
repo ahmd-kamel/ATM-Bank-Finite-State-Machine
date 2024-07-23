@@ -76,10 +76,8 @@ always @(posedge clk or negedge reset_n) begin
             end
         end
         
-        if (operation_done == 1) begin // this sequence is logical
-            if (card_out == 1) begin
+        if (operation_done || card_out) begin // this sequence is logical
                 balances_database[card_no] <= update_balance;
-            end
         end
     end
 end
